@@ -5,5 +5,5 @@
       - Django
       - Arduino 
 
-  - Exemple
+  - Exemple video (click to watch) 
   [![Watch the video](./screenshots/i.png)](https://github.com/jamalroger/anySensor)
