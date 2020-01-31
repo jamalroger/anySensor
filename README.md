@@ -6,6 +6,4 @@
       - Arduino 
 
   - Exemple
-
-
-   [![Watch the video]](./screenshots/anysensor.mp4)
+  [![Watch the video](./screenshots/i.png)](https://github.com/jamalroger/anySensor)
