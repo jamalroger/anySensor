@@ -1,0 +1,73 @@
+<div id="d" class="container" style="padding-top:20px">  
+  <div class="blue-text text-darken-2">Create a Operator users</div>  
+  <hr/>
+  <div class="blue-text text-darken-2">{{ res }}</div>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="row">
+        <div class="input-field col s6">
+          <input  id="first_name" name="first_name" type="text" class="validate" ngModel>
+          <label for="first_name" >First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" name="last_name" type="text" class="validate" ngModel>
+          <label for="last_name">Last Name</label>
+         </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="username" name="username" type="text" class="validate" ngModel>
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s6">
+            <input  id="cin" name="cin" type="text" class="validate" ngModel>
+            <label for="cin">CIN</label>
+          </div>
+      </div>
+      <div class="row">
+
+        <div class="input-field col s6">
+          <input  id="password"  name="password" type="password" class="validate" ngModel>
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s6">
+          <input   id="password2" name="password2" type="password" class="validate" ngModel>
+          <label for="password2">Repeat Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email"  name="email" type="email" class="validate" ngModel>
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="tel"  name="tel" type="text" class="validate" ngModel>
+          <label for="tel">Phone</label>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="job"  name="job" type="text" class="validate" ngModel>
+          <label for="job">Job</label>
+        </div>
+         <div class="input-field col s6">
+          <input id="city"  name="city" type="text" class="validate" ngModel>
+          <label for="city">City</label>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s6">
+            <input id="adresse"  name="adresse" type="text" class="validate" ngModel>
+            <label for="adresse">Adresse</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="dn"  name="dn" type="date" class="validate" ngModel>
+            <label for="dn">Birthday</label>
+          </div>
+
+      </div>
+      <div class="row"> <button class="col s12 waves-effect waves-light btn-small">Submit</button>  </div>
+    </form>
+  </div>
+  

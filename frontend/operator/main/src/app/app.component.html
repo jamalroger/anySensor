@@ -1,0 +1,49 @@
+
+<ngx-loading-bar></ngx-loading-bar>
+<div  id="top" class="">
+   <nav class="nav-extended"> 
+    <div class="nav-wrapper"> 
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> 
+     <div class="nav-content">
+      <div id="transform">
+        
+        <span class="left">
+          <a href="#" (click)="goBack()"><i class="material-icons">arrow_back</i></a> 
+        </span>
+        <img src="/assets/logo.png" width="200px" class="center">
+        <span class="right"> 
+               <a id="search" href="/logout" > <i class="material-icons">logout</i> </a>
+         </span>
+       </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+  <!--slidnav-->
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="https://materializecss.com/images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="/assets/img/login/default.png"></a>
+      <a href="#name"><span class="white-text name">{{user.username}}</span></a>
+      <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+    </div></li>
+    <li *ngFor='let item of listMenu'><a  [routerLink]="item.path" class="waves-effect sidenav-close"> <i class="material-icons">navigate_next</i>{{item.name}}</a></li>
+  </ul>
+  
+
+
+<main id="transform"> 
+  <router-outlet>  </router-outlet>
+ 
+     <div style="bottom:0;width:100%;padding: 15px 0px;background: #E8EDEA;text-align:center;border-top:1px solid #cccfff;font-family:animevncms;">
+      Powered by Jamal roger 
+        <br>
+
+            Est Sidi Bennour © 2018 - 2019
+ </div>
+</main>
+
+  

@@ -1,0 +1,38 @@
+<div style="padding:10px">
+    <div class="blue-text text-darken-2"><h3>List Sensor</h3></div>  
+    <hr/>
+ <div  style="text-align: center"  *ngIf='!listSensor'>
+
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+</div>
+    
+    <table *ngIf='listSensor'>
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Created by </th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor='let sensor of listSensor' [routerLink]='"/sensor/info/"+sensor.id'>
+          <td>{{sensor.id}}</td>
+          <td>{{sensor.sensor_name}}</td>
+          <td>{{sensor.model}}</td>
+          <td>{{sensor.username}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>

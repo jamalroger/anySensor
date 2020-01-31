@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+     <title>app django</title>
+		 <link rel="stylesheet" type="text/css" href="/assets/css/login.css"/>
+		 <!-- Compiled and minified CSS -->
+		 <link rel="stylesheet" href="/assets/css/materialize.min.css">
+		 <!-- Compiled and minified JavaScript -->
+		 <script src="/assets/js/materialize.min.js"></script>    
+</head>
+<body>
+    <div class="limiter">
+
+		<div class="container-login100">
+			
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50" style="padding:30px">
+				<img src="../assets/logo.png" alt="logo" width="200px"/>
+				<form class="login100-form validate-form" action="/login/" method="post">
+					{% csrf_token %} 
+					<span class="login100-form-title p-b-33" style="padding-bottom: 30px">
+				
+					  <img  id="lg_img" src="/assets/img/login/default.png" with="200px" height="100px"/>
+							<br/>		
+						Account Login	
+			     </span>
+					{{errors}}
+					<div class="input-field col s6">
+						<input id="name" type="text" name="username" class="validate">
+						<label for="name">Username</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="pass" type="password" name="password" class="validate">
+						<label for="pass">Password</label>
+					</div>
+                      
+					<div style="padding-top: 30px;text-align: center">
+						<input type="submit" name="submit"   class="waves-effect waves-light btn-large"  value="submit"/>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<script>
+  function login(){ 
+
+document.querySelector("#name").addEventListener('keyup',function(){
+			document.querySelector("#lg_img").setAttribute('src','/assets/img/login/login.png');
+	});
+document.querySelector("#name").addEventListener('mouseout',function(){
+			document.querySelector("#lg_img").setAttribute('src','/assets/img/login/default.png');
+	});
+document.querySelector("#pass").addEventListener('mouseout',function(){
+			document.querySelector("#lg_img").setAttribute('src','/assets/img/login/default.png');
+	});
+document.querySelector("#pass").addEventListener('keyup',function(){
+			document.querySelector("#lg_img").setAttribute('src','/assets/img/login/pass.png');
+	});
+
+  }
+login();		
+</script>
+</body>
+
+
+</html>

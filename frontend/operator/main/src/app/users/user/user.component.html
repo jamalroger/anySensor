@@ -1,0 +1,42 @@
+<div style="padding: 10px">
+    <div class="blue-text text-darken-2"><h3>List Users</h3></div>  
+    <hr/>
+    <div  style="text-align: center"  *ngIf='!listUser'>
+
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+    </div>
+        
+        <table *ngIf='listUser'>
+  <thead>
+    <tr>
+        <th>Select</th>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let user of listUser;index as i'>
+      <td><input id="indeterminate-checkbox"  type="checkbox" (click)="checked(user.id,i)" /></td>
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td><a [routerLink]='"/users/info/"+user.id'>View Profile</a></td>
+    </tr>
+
+  </tbody>
+</table>
+<div class="row"><input class="btn waves-effect waves-light" type="button" (click)="deleteUser()" value="Delete Users"></div>
+              
+</div>

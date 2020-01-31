@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Info Senor of id={{info.id}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</head>
+<body>
+        <div class="row"> 
+              <div class="col s4">
+                <select class="browser-default" id="selectT">
+                  <option value="" disabled selected>Choose Select Type</option>
+                  <option value="line">Line</option>
+                  <option value="bar">Bar</option>
+                </select>
+              </div>
+                
+               
+        </div>
+            <div class="row"> 
+             <div class="col l8 s12"> 
+                 <canvas id="myChart" width="400" height="200"></canvas>
+             </div>
+               <div class="col l4 s12"> 
+                      Sensor Information 
+                      <hr/>
+                      <b>ID</b> :{{ info.id }}<br/>
+                     <b>name</b> : {{ info.sensor_name }}<br/>
+                     <b>Created by User ID </b> : {{ info.id_user }} <br/>
+                     <b>Model</b> : {{ info.model }}<br/>
+                     <b>Poids</b> : {{ info.poids}}<br/>
+                     <b>Date_fab</b> : {{ info.date_fab}}<br/>
+                     <b>Date_exp</b> : {{ info.date_exp}} <br/>
+                     <b>Description</b> : {{ info.des }}<br/>
+
+                 </div>
+                </div>
+       <script>       
+        var d ='{{ data }}';
+        var data = JSON.parse(d.replace(/&quot;/g,'"'));
+        var val =[];        
+        var val_date = [];
+        if(data.length<=10){ 
+         for(i=0;i<data.length;i++) {
+            val[i]=data[i].val;
+            val_date[i]=data[i].date_val;
+          }
+        } else {
+            for(i=data.length-11,j=0;i<data.length;i++,j++) {
+            val[j]=data[i].val;
+            val_date[j]=data[i].date_val;
+              }
+
+        }
+       
+       var ctx = document.getElementById("myChart");
+        var config = {
+           type: 'line',
+           data: {
+               labels: val_date,
+               datasets: [{
+                   label: 'Sensor Analytics',
+                   data: val,
+                   backgroundColor: [
+                       'rgba(255, 99, 132, 0.2)',
+                       'rgba(54, 162, 235, 0.2)',
+                       'rgba(255, 206, 86, 0.2)',
+                       'rgba(75, 192, 192, 0.2)',
+                       'rgba(153, 102, 255, 0.2)',
+                       'rgba(255, 159, 64, 0.2)'
+                   ],
+                   borderColor: [
+                       'rgba(255,99,132,1)',
+                       'rgba(54, 162, 235, 1)',
+                       'rgba(255, 206, 86, 1)',
+                       'rgba(75, 192, 192, 1)',
+                       'rgba(153, 102, 255, 1)',
+                       'rgba(255, 159, 64, 1)'
+                   ],
+                   borderWidth: 1
+               }]
+           },
+           options: {
+               scales: {
+                   yAxes: [{
+                       ticks: {
+                           beginAtZero:true
+                       }
+                   }]
+               }
+           }
+       }
+
+       var chart = new Chart(ctx, config);
+
+setInterval(function(){
+$.ajax({
+   url:'/getStatique?id={{info.id}}',
+   method:'GET',
+   success:function(data){ update(data);},
+});
+},1000);
+
+function update(data){  
+      data = JSON.parse(data);
+       val =[];        
+       val_date = [];
+    // getting value and date of values
+       if(data.length<=10){ 
+         for(i=0;i<data.length;i++) {
+            val[i]=data[i].val;
+            val_date[i]=data[i].date_val;
+          }
+        } else {
+            for(i=data.length-11,j=0;i<data.length;i++,j++) {
+            val[j]=data[i].val;
+            val_date[j]=data[i].date_val;
+              }
+
+        }
+
+        chart.data.labels=val_date;
+        chart.data.datasets.forEach(function(dataset){
+                    dataset.data=val;
+              });
+         chart.update();
+   }
+
+   $('#selectT').show();
+   $('#selectT').on('change',function(){
+       config.type=$(this).val();
+       config.data.labels=val_date;
+       config.data.datasets.forEach(function(dataset){
+                  dataset.data=val;
+              });
+      chart = new Chart(ctx,config);
+      chart.update();
+});
+
+
+
+
+
+// function back(){
+// var decr = (function () {
+//     var i = 10;
+//     return function () {
+//         return i-=10;
+//     }
+// })();
+
+// for(j=0,p=data.length-decr();p<data.length-decr()+10;j++,p++){
+//     val[j]=data[p].val;
+//     val_date[j]=data[p].date_val;
+//     // getting value and date of value
+//         chart.data.labels=val_date;
+//         chart.data.datasets.forEach(function(dataset){
+//                     dataset.data=val;
+//               });
+//          chart.update();
+// }
+
+
+// }
+// function next(){
+
+
+
+// }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<div class="container" style="padding-top:20px">
+    <div class="blue-text text-darken-2"><h3>User Information</h3></div>  
+    <hr/>
+        <div class="row"> <div class="col s6"> First name : <b> {{info.first_name}} </b></div>  <div class="col s6"> Last name : <b> {{info.last_name}} </b> </div> </div>
+        <div class="row"> <div class="col s6"> CIN :<b> {{info.cin}} </b> </div>  <div class="col s6"> Phone : <b> {{info.tel}} </b></div> </div>
+        <div class="row"> <div class="col s6"> Adresse : <b> {{info.adresse}} </b> </div>  <div class="col s6"> City : <b> {{info.city}} </b> </div> </div>
+        <div class="row"> <div class="col s6"> Job : <b> {{info.job}} </b></div>  <div class="col s6"> Birthday : <b> {{info.dn}} </b></div> </div>
+        <br/>
+        <br/>
+
+<div class="blue-text text-darken-2"><h3>List Users of {{info.first_name}}</h3></div>  
+  <hr/>
+<div style="padding: 10px">
+             
+    <div  style="text-align: center"  *ngIf='!listUser'>
+
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+    </div>
+        
+        <table *ngIf='listUser'>
+                  <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name </th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let user of listUser'>
+                      <td>{{user.id}}</td>
+                      <td>{{user.username}}</td>
+                      <td>{{user.first_name}}</td>
+                      <td>{{user.last_name}}</td>
+                      <td>{{user.email}}</td>
+                
+                    </tr>
+                
+                  </tbody>
+                </table>
+                </div>
+        
+        </div>
+        

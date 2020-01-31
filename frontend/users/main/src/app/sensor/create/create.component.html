@@ -1,0 +1,41 @@
+<div class="container" style="padding-top:20px">
+  <div class="blue-text text-darken-2"><h3>Create Senosr</h3> </div>  
+  <div class="blue-text text-darken-2">{{ res }}</div>
+<hr/>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<div class="row">
+  <div class="input-field col s6">
+    <input id="sensor_name"  name="sensor_name" type="text"  ngModel>
+    <label for="sensor_name">Sensor Name</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="model" type="text"  name="model" ngModel>
+    <label for="model">Model</label>
+  </div>
+  <div class="input-field col s6">
+    <input  id="date_fab" type="date" name="date_fab" ngModel>
+    <label for="date_fabe">manufacture date</label>
+  </div>
+  <div class="input-field col s6">
+    <input id="date_exp" type="date"  name="date_exp"  ngModel>
+    <label for="date_exp">expiration date</label>
+  </div>
+  <div class="row">
+      <div class="input-field col s6">
+          <input id="poids" type="number"  name="poids"  ngModel>
+          <label for="poids">poids</label>
+        </div>
+       <div class="input-field col s6">
+      <textarea id="last_name"  class="materialize-textarea" name="des" type="text" ngModel></textarea>
+      <label for="des">Description</label>
+      </div>
+ </div>
+<div class="row">
+     <button class="btn waves-effect waves-light" type="submit">Create Sensor
+      <i class="material-icons right">send</i>
+    </button>
+</div>   
+  
+</div>
+</form>
+</div>

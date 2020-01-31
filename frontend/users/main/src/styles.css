@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+#loadimg {
+  left: 40%;
+  margin-top: 10%;
+}
+    .iframe-container iframe {
+     border: 0;
+     height: 100vw;
+     width: 100%;
+  }
+/* For for mobile */
+@media screen and (max-width:1000px) 
+{
+
+#transform {
+       margin-left:0px;
+       padding: 0px;
+    }
+
+
+}
+
+/* For PC */
+@media screen and (min-width:1000px)
+{ 
+    
+#transform {
+    margin-left: 300px;
+    padding: 0px;
+}
+}

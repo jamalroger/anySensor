@@ -1,0 +1,5 @@
+input[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: absolute;
+    opacity: 10;
+    pointer-events: all;
+}
