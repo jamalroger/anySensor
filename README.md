@@ -8,4 +8,4 @@
   - Exemple
 
 
-   [![Watch the video]](./screenshots/anaysensor.mp4)
+   [![Watch the video]](./screenshots/anysensor.mp4)
